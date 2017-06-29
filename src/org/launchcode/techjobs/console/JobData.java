@@ -75,11 +75,40 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
+            String lowerValue = aValue.toLowerCase();
+            String searchValue = value.toLowerCase();
 
-            if (aValue.contains(value)) {
+            if (lowerValue.contains(searchValue)) {
                 jobs.add(row);
             }
         }
+
+        return jobs;
+    }
+
+    //this method is called by an ArrayList of HashMaps containing String, String and takes the parameter "value" which is a search term
+    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+
+        // load data, if not already loaded
+        loadData();
+
+        //create a new ArrayList of jobs to return at the end
+        ArrayList<HashMap<String,String>> jobs = new ArrayList<>();
+
+        //isolate each HashMap
+        for (HashMap<String, String> job : allJobs) {
+            for (String aValue : job.values()) {
+                String lowerValue = aValue.toLowerCase();
+                String searchValue = value.toLowerCase();
+                if (lowerValue.contains(searchValue)) {
+                    jobs.add(job);
+                    break;
+                }
+            }
+
+        }
+
+
 
         return jobs;
     }
