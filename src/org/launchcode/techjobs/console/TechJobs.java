@@ -112,14 +112,18 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
+        //if printJobs was given an empty list (no jobs), print a message saying so
         if (someJobs.size() == 0) {
             System.out.println("Sorry, no jobs were found.");
         } else {
+            //for each job in the list that the program was given, print some decoration to go between each job
             for (HashMap<String, String> job : someJobs) {
                 System.out.println("\n*****");
+                //then, for each job feature of this job, print the job info
                 for (Map.Entry<String, String> jobFeature : job.entrySet()) {
                     System.out.println(jobFeature.getKey() + ": " + jobFeature.getValue());
                 }
+                //after printing all job info, print another line of dividing characters
                 System.out.println("*****");
             }
         }
